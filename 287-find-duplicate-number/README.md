@@ -89,4 +89,43 @@ So, we are left with
   initial path = distance from intersection to start of cycle
 ```
 
-I did not really like this problem, I really thought that this was more of a tricky discrete mathematics quirk than any kind of actual coding ability question :/ Would I ever come up with the proper solution on my own? No, and certainly not in a coding interview. Would I approve this clever solution in a Code Review? Also probably no, it's very obtuse AND I would likely never actually care about adding a linear amount of memory in an algorithm like this. All that being said, the algorithm and proof were fun to learn about, I would just never give this problem to a candidate I was interviewing. 
+I did not really like this problem, I really thought that this was more of a tricky discrete mathematics quirk than any kind of actual coding ability question :/ Would I ever come up with the proper solution on my own? No, and certainly not in a coding interview. Would I approve this clever solution in a Code Review? Also probably no, it's very obtuse AND I would likely never actually care about adding a linear amount of memory in an algorithm like this. All that being said, the algorithm and proof were fun to learn about, I would just never give this problem to a candidate I was interviewing.
+
+## Alternate solution
+
+If we change the parameters of the problem slightly, we can solve the problem mathematically very easily. If instead we had exactly one number repeated exactly once and the numbers were guaranteed to be in the full range [1,n], then we just use the sum of the list, subtract the summation of n where n is the maximum value of the list (which should also be the len(list) if there is exactly one duplicate) using the gaussian summation formula `sum = n(n+1) / 2` and the result is our answer.
+```
+for exactly one duplicate in a continuous list:
+
+value of duplicate = sum(list) - (len(list) * (len(list) + 1) / 2 )
+
+ex.
+
+[1,2,2,3,4]
+sum(list) = 12
+4(4+1) / 2 = 4*5 / 2 = 10
+12 - 10 = 2
+
+[1,2,3,4,4]
+sum(list) = 14, gaussian = 10, ans = 4
+```
+
+If there can be any number of repeats but the numbers must be continuous e.g. `[1,2,2,2,3,4]` is allowed but `[1,2,2,2,4,5]` is not, then we alter the solution to take that into account by dividing the result by the difference between the max(list) and the len(list), as well as using the max of the list instead of the len as in the previous example (which didn't matter previously since those values were the same.)
+
+```
+
+for any number of duplicates but with a continuous list:
+
+value of duplicate =
+(  sum(list) - (max(list) * (max(list) + 1) / 2 )  )
+           (  len(list)   -   max(list)  )
+
+ex.
+[1,2,2,2,3,4]
+sum(list) = 14, len(list) = 6, max(list) = 4
+
+( 14 - 10 )  =  4 / 2  = 2
+ ( 6 - 4 )
+```
+
+This mathematical solution is pretty slick, but has very little to do with even computer science let alone coding aptitude. 

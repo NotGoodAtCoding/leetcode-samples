@@ -12,8 +12,7 @@ But this is impossible to do with in-place memory, we would need to create a res
 [ 0 0 -1]
 [ 0 1 0 ]
 ```
-
-This is an ugly and brittle solution. So, we set up the rotation.
+And so on. This is an ugly and brittle solution that won't support the general case of an arbitrary sized input matrix. So, we set up the rotation.
 
 We set up vars to rotate in a familiar way:
 

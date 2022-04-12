@@ -1,4 +1,4 @@
-def minDominoRotations(self, tops: List[int], bottoms: List[int]) -> int:
+def minDominoRotations(tops: List[int], bottoms: List[int]) -> int:
     valid = {tops[0], bottoms[0]}
 
     for top, bottom in zip(tops, bottoms):

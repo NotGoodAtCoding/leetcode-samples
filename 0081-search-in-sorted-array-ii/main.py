@@ -1,4 +1,4 @@
-def search(self, nums: List[int], target: int) -> bool:
+def search(nums: List[int], target: int) -> bool:
     left, right = 0, len(nums)-1
     while left <= right:
         mid = (left+right) // 2

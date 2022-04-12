@@ -1,4 +1,4 @@
-def partitionLabels(self, s: str) -> List[int]:
+def partitionLabels(s: str) -> List[int]:
     partitions = []
     rev_str = s[::-1]
     partition_start = partition_end = -1

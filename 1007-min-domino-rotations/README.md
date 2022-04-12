@@ -2,30 +2,20 @@ We start with a set of valid "solutions" - that is, values that the dominoes can
 
 Once we determine the space of valid solutions, we can determine the minimum flips to reach one of these endpoints. I practically brute-forced this solution by checking how many flips it would take to make the top or bottom match each solution, take the min of those values, then the min of those two against each other.
 
-I tried optimizing this by tracking flips during iteration, counting the occurrences of each solution in the top and bottom rows during the single iteration, but this did not perform significantly faster than the initial "brute force" method to determine flips required. 
+I tried optimizing this by tracking flips during iteration, counting the occurrences of each solution in the top and bottom rows during the single iteration, but this did not perform significantly faster than the initial "brute force" method to determine flips required.
 
 ```
 def minDominoRotations(self, tops: List[int], bottoms: List[int]) -> int:
     valid = {tops[0], bottoms[0]}
-    top_sols = {tops[0]: 0}
-    bot_sols = {bottoms[0]: 0}
 
     for top, bottom in zip(tops, bottoms):
         valid = valid.intersection({top, bottom})
         if not valid:
             return -1
-
-        if top == bottom:
-            continue
-        if top in valid:
-            top_sols[top] = top_sols.get(top, 0) +1
-        if bottom in valid:
-            bot_sols[bottom] = bot_sols.get(bottom, 0) +1
-
     top_flips = bot_flips = len(tops)
     for solution in valid:
-        top_flips = min(top_flips, top_sols[solution])
-        bot_flips = min(bot_flips, bot_sols[solution])
+        top_flips = min(top_flips, len([t for t in tops if t != solution]))
+        bot_flips = min(bot_flips, len([b for b in bottoms if b != solution]))
 
     return min(top_flips, bot_flips)
   ```

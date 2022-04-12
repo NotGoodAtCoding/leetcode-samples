@@ -13,7 +13,7 @@ Which does not fulfill the problem requirements.
 We notice that since the elements of the list are all integers with values under `len(nums)` and that by using a value-index traversal we can at least detect that there exists a cycle when we use two indexes to get the same value, we need to find a way to detect when that would happen. So, I had an "ahead" and "behind" traversal, one that would traverse twice per iteration and the other just once, knowing that they would eventually meet and I would know we are in the cycle at that point, but I had no idea how to move on from there.
 
 ## Actual Solution
-The proper algorithm does start with path traversal, but then uses Floyd's algorithm for detecting the beginning of a cycle. I had never heard of this algorithm before, so this was a good learning experience.
+The proper algorithm starts with path traversal, but then uses Floyd's algorithm for detecting the beginning of a cycle. I had never heard of this algorithm before, so this was a good learning experience.
 
 We start by setting our fast and slow runners, then we let them go using index-value traversal with the "fast" runner going twice the "speed" by covering two index-value jumps while the slow goes to just one. Once they meet, we know we have entered the cycle.
 
@@ -128,4 +128,4 @@ sum(list) = 14, len(list) = 6, max(list) = 4
  ( 6 - 4 )
 ```
 
-This mathematical solution is pretty slick, but has very little to do with even computer science let alone coding aptitude. 
+This mathematical solution is pretty slick, but has very little to do with even computer science let alone coding aptitude.

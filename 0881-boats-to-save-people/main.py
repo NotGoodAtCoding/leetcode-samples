@@ -1,19 +1,20 @@
-def numRescueBoats(self, people: List[int], limit: int) -> int:
-    sor_people = sorted(people)
-    low = boats = 0
-    high = len(people) - 1
-    while low < len(people) and high >= low:
-        if people[low] + people[high] <= limit:
-            low += 1
-            high -= 1
-        else:
-            high -= 1
-        boats += 1
+# initial version of solution
+# def numRescueBoats(people: List[int], limit: int) -> int:
+#     sor_people = sorted(people)
+#     low = boats = 0
+#     high = len(people) - 1
+#     while low < len(people) and high >= low:
+#         if people[low] + people[high] <= limit:
+#             low += 1
+#             high -= 1
+#         else:
+#             high -= 1
+#         boats += 1
+#
+#     return boats
 
-    return boats
 
-
-def numRescueBoats(self, people: List[int], limit: int) -> int:
+def numRescueBoats(people: List[int], limit: int) -> int:
     sortedPeople = sorted(people, reverse=True)
     first = 0
     last = len(sortedPeople) - 1

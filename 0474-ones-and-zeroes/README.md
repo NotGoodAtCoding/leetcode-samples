@@ -136,11 +136,11 @@ def findMaxForm(self, strs: List[str], m: int, n: int):
 
     paths = {(0, 0, 0)}
     for s in strs:
-        sm = s.count("0")
-        sn = s.count("1")
-        # the e means existing path
-        paths |= {(length+1, sm+em, sn+en) for i, em, en in paths if sm+em<=m and sn+en<=n}
+        incoming_zeros = s.count("0")
+        incoming_ones = s.count("1")
+
+        paths |= {(length+1, incoming_zeros+existing_zeroes, incoming_ones+existing_ones) for i, existing_zeroes, existing_ones in paths if incoming_zeros+existing_zeroes<=m and incoming_ones+existing_ones<=n}
       return max(path_length for path_length, _, _ in paths)
 ```
 
-But, I mean, that's not very readable...
+I expanded the var names here for clarity.

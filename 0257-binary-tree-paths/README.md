@@ -1,3 +1,3 @@
-## Naive Solution
+## Solution
 
-We just traverse the tree. This solution needs to be optimized. 
+We just traverse the tree with a Depth-first full traversal.

@@ -1,4 +1,4 @@
-  def numDifferentIntegers(self, word: str) -> int:
+  def numDifferentIntegers(word: str) -> int:
         nits = {}
         runes = ""
         for s in word:

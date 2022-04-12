@@ -1,4 +1,4 @@
-def binaryTreePaths(self, root: Optional[TreeNode]) -> List[str]:
+def binaryTreePaths(root: Optional[TreeNode]) -> List[str]:
     paths = []
     if not root:
         return paths

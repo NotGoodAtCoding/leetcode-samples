@@ -1,6 +1,5 @@
-def twoSum(self, nums: List[int], target: int) -> List[int]:
-    n_sort = nums.copy()
-    n_sort.sort()
+def twoSum(nums: List[int], target: int) -> List[int]:
+    n_sort = sorted(nums)
     p1 = 0
     p2 = len(nums) - 1
     while p1 < p2:

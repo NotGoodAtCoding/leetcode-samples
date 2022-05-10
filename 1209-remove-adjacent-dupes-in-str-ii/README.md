@@ -1,0 +1,1 @@
+We use a stack to track the chars and their adjacent counts as we iterate over the str. If we add a char to the last stack item that puts it over the limit `k` then we can pop that off the stack. We must also convert the stack back to an output str which I originally did with a nested loop but can be done more eloquently with str multiplication. 
